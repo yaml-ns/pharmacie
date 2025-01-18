@@ -44,3 +44,30 @@
     -fx-focus-color: #83b700;
     -fx-faint-focus-color: rgba(131, 183, 0, 0.17);
 }
+.left-menu {
+    -fx-background-color: #e7e7e7;
+}
+.left-menu-header {
+    -fx-background-color: #0A2A35;
+}
+.left-menu-button{
+    -fx-background-color: #e7e7e7;
+    -fx-border-radius: 7px;
+    -fx-background-radius: 7px;
+    /*-fx-effect: dropshadow(gaussian, #FFFFFF, 30, 0, -10, -10),*/
+    /*dropshadow(gaussian, rgba(174, 174, 192, 0.4), 30, 0, 10, 10);*/
+}
+.left-menu-button:hover{
+    -fx-border-color: rgba(25, 200, 150, 0.3);
+    -fx-cursor: hand;
+    -fx-background-color: rgba(255, 255, 255);
+
+}
+.left-menu-button-dot {
+    -fx-background-color: #1DDAB7;
+    -fx-border-color: #fdfdfd;
+    -fx-border-width: 1px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, #1DDAB7, 5, 0, 0, 0);
+}

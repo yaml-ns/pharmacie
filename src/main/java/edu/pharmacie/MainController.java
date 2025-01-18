@@ -1,35 +1,51 @@
 package edu.pharmacie;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.fxml.Initializable;
-import javafx.scene.paint.Color;
-import org.kordamp.ikonli.javafx.FontIcon;
-import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
 
-public class MainController implements Initializable {
-    @FXML
-    private Label welcomeText;
+public class MainController {
 
     @FXML
-    private Button loginButton;
+    private StackPane mainContainer;
+    private Pane loginView;
+    private Pane dashboardView;
+    @FXML
+    public void initialize(){
+           try {
+               FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("views/login-view.fxml"));
+               FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("views/dashboard-view.fxml"));
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        FontIcon fontIcon = new FontIcon(FontAwesomeSolid.ARROW_CIRCLE_RIGHT);
-        fontIcon.setIconSize(15);
-        fontIcon.setIconColor(Color.WHITE);
-        loginButton.setGraphic(fontIcon);
+               loginView = loginLoader.load();
+             try {
 
+               dashboardView = dashboardLoader.load();
+             }catch (Exception e){
+                 System.out.println(e.getCause());
+                 System.out.println(e.getMessage());
+                 System.out.println(e.getClass());
+             }
+               dashboardView.setVisible(false);
+
+               LoginController loginController = loginLoader.getController();
+               loginController.setMainController(this);
+
+               mainContainer.getChildren().addAll(loginView,dashboardView);
+
+
+           }catch (Exception e){
+               System.out.println("ici");
+               System.out.println(e.getStackTrace());
+           }
     }
 
-    @FXML
-    protected void onLoginButton() {
-        System.out.println("Hello world");
+    public void showDashboard(){
+        loginView.setVisible(false);
+        dashboardView.setVisible(true);
     }
+
 }

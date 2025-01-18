@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pharmacie.LoginController">
+    <children>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="250.0" minWidth="220.0" prefHeight="500.0" prefWidth="220.0" styleClass="left-panel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="220.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../logo.jpeg" />
+                    </image>
+                </ImageView>
+                <BorderPane VBox.vgrow="ALWAYS">
+                    <top>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Depuis 2024" textAlignment="CENTER" wrappingWidth="220.0" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="System Italic" size="12.0" />
+                            </font>
+                        </Text>
+                    </top>
+                    <bottom>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tous droits réservés" textAlignment="CENTER" wrappingWidth="220.0" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="Verdana Italic" size="10.0" />
+                            </font>
+                            <BorderPane.margin>
+                                <Insets bottom="20.0" />
+                            </BorderPane.margin>
+                        </Text>
+                    </bottom>
+                </BorderPane>
+            </children>
+        </VBox>
+        <BorderPane layoutX="220.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="580.0" prefHeight="500.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <bottom>
+                <VBox alignment="CENTER" prefHeight="84.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Tous les champs avec (*) sont obligatoires" textAlignment="CENTER" wrappingWidth="579.2308959960938" VBox.vgrow="ALWAYS">
+                            <font>
+                                <Font name="System Italic" size="12.0" />
+                            </font>
+                        </Text>
+                    </children></VBox>
+            </bottom>
+            <center>
+                <VBox alignment="CENTER" prefHeight="278.0" prefWidth="580.0">
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <children>
+                        <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="230.0" minWidth="450.0" prefHeight="230.0" prefWidth="450.0" styleClass="login-form-container" VBox.vgrow="NEVER">
+                            <children>
+                                <VBox alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="449.0">
+                                    <children>
+                                        <ImageView fitHeight="15.0" fitWidth="15.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../icons/lock.png" />
+                                            </image>
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </VBox.margin>
+                                        </ImageView>
+                                    </children>
+                                </VBox>
+                                <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Connexion à votre espace " textAlignment="CENTER" wrappingWidth="448.28863525390625">
+                                    <font>
+                                        <Font name="Verdana Bold" size="18.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin>
+                                </Text>
+                                <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir votre username et mot de passe" textAlignment="CENTER" wrappingWidth="449.68980407714844">
+                                    <font>
+                                        <Font name="System Italic" size="12.0" />
+                                    </font></Text>
+                                <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="450.0" prefHeight="100.0" prefWidth="450.0" vgap="25.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.39996337890625" minWidth="10.0" prefWidth="147.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.0" minWidth="10.0" prefWidth="283.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Username (*)" wrappingWidth="99.69103622436523" />
+                                        <Text accessibleRole="BUTTON" fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe (*)" wrappingWidth="100.208251953125" GridPane.rowIndex="1" />
+                                        <TextField fx:id="usernameField" prefHeight="29.0" prefWidth="210.0" styleClass="login-form-input" GridPane.columnIndex="1" />
+                                        <PasswordField fx:id="passwordField" styleClass="login-form-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Button fx:id="loginButton" graphicTextGap="10.0" minHeight="32.0" minWidth="269.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="32.0" prefWidth="269.0" styleClass="primary-button" text="Se connecter" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets top="20.0" />
+                                            </GridPane.margin>
+                                            <font>
+                                                <Font name="Verdana Bold" size="12.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                            </padding>
+                                        </Button>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                    </padding>
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                </GridPane>
+                            </children>
+                        </VBox>
+                    </children></VBox>
+            </center>
+            <top>
+                <VBox alignment="CENTER" maxHeight="130.0" maxWidth="1.7976931348623157E308" minHeight="130.0" minWidth="580.0" prefHeight="130.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" maxHeight="130.0" maxWidth="1.7976931348623157E308" minHeight="130.0" minWidth="580.0" prefHeight="130.0" prefWidth="580.0" spacing="5.0" styleClass="login-header" VBox.vgrow="ALWAYS">
+                            <children>
+                                <VBox alignment="CENTER" fillWidth="false" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="580.0" prefHeight="100.0" prefWidth="580.0" styleClass="login-header-content" VBox.vgrow="NEVER">
+                                    <children>
+                                        <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacie Bon Le Bon" textAlignment="CENTER" wrappingWidth="580.0" VBox.vgrow="ALWAYS">
+                                            <font>
+                                                <Font name="Verdana Bold" size="28.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="20.0" />
+                                            </VBox.margin>
+                                        </Text>
+                                        <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Votre santé, notre combat !" textAlignment="CENTER" wrappingWidth="577.7610321044922" VBox.vgrow="ALWAYS">
+                                            <font>
+                                                <Font name="System Italic" size="22.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                            </VBox.margin>
+                                        </Text>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

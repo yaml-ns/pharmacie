@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="800.0" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pharmacie.DashboardController">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="250.0" minWidth="220.0" prefHeight="500.0" prefWidth="220.0" styleClass="left-menu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="220.0" spacing="85.0" styleClass="left-menu-header" VBox.vgrow="NEVER">
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../logo.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BLB">
+                     <font>
+                        <Font name="Verdana Bold" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="448.0" prefWidth="220.0">
+               <children>
+                  <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                     <children>
+                        <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
+                           <children>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../icons/dashboard.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="38.0" prefWidth="126.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" maxHeight="38.0" maxWidth="130.0" minHeight="38.0" minWidth="130.0" prefHeight="38.0" prefWidth="130.0">
+                                 <children>
+                                    <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children></Pane>
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                           <children>
+                              <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <effect>
+                        <DropShadow height="25.0" offsetX="6.0" offsetY="6.0" radius="12.0" width="25.0">
+                           <input>
+                              <DropShadow height="25.0" offsetX="-6.0" offsetY="-6.0" radius="12.0" spread="0.04" width="25.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color></DropShadow>
+                           </input>
+                           <color>
+                              <Color red="0.49000000953674316" green="0.49000000953674316" blue="0.49000000953674316" opacity="0.6322188377380371" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fillHeight="false" layoutX="20.0" layoutY="20.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                     <children>
+                        <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
+                           <children>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../icons/contact.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="155.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutX="-1.0" maxHeight="38.0" maxWidth="130.0" minHeight="38.0" minWidth="130.0" prefHeight="38.0" prefWidth="130.0">
+                                 <children>
+                                    <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Employés" wrappingWidth="72.17224884033203" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                           <children>
+                              <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <effect>
+                        <DropShadow height="25.0" offsetX="6.0" offsetY="6.0" radius="12.0" width="25.0">
+                           <input>
+                              <DropShadow height="25.0" offsetX="-6.0" offsetY="-6.0" radius="12.0" spread="0.04" width="25.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </input>
+                           <color>
+                              <Color red="0.49000000953674316" green="0.49000000953674316" blue="0.49000000953674316" opacity="0.6322188377380371" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fillHeight="false" layoutX="20.0" layoutY="74.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                     <children>
+                        <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../icons/anesthesia.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="155.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" maxHeight="38.0" maxWidth="130.0" minHeight="38.0" minWidth="130.0" prefHeight="38.0" prefWidth="130.0">
+                                 <children>
+                                    <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Médicaments" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                           <children>
+                              <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <effect>
+                        <DropShadow height="25.0" offsetX="6.0" offsetY="6.0" radius="12.0" width="25.0">
+                           <input>
+                              <DropShadow height="25.0" offsetX="-6.0" offsetY="-6.0" radius="12.0" spread="0.04" width="25.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </input>
+                           <color>
+                              <Color red="0.49000000953674316" green="0.49000000953674316" blue="0.49000000953674316" opacity="0.6322188377380371" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fillHeight="false" layoutX="20.0" layoutY="128.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                     <children>
+                        <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
+                           <children>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../icons/clipboard.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="46.0" prefWidth="155.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" maxHeight="38.0" maxWidth="130.0" minHeight="38.0" minWidth="130.0" prefHeight="38.0" prefWidth="130.0">
+                                 <children>
+                                    <Text fill="#0a2a35" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </Pane>
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                           <children>
+                              <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
+                           </children>
+                        </Pane>
+                     </children>
+                     <effect>
+                        <DropShadow height="25.0" offsetX="6.0" offsetY="6.0" radius="12.0" width="25.0">
+                           <input>
+                              <DropShadow height="25.0" offsetX="-6.0" offsetY="-6.0" radius="12.0" spread="0.04" width="25.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </input>
+                           <color>
+                              <Color red="0.49000000953674316" green="0.49000000953674316" blue="0.49000000953674316" opacity="0.6322188377380371" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.821052610874176" green="0.821052610874176" blue="0.821052610874176" />
+               </color>
+            </DropShadow>
+         </effect>
+      </VBox>
+      <BorderPane layoutX="220.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="580.0" prefHeight="500.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <VBox alignment="CENTER" prefHeight="84.0" prefWidth="580.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="278.0" prefWidth="580.0">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <top>
+            <VBox alignment="CENTER" maxHeight="130.0" maxWidth="1.7976931348623157E308" minHeight="130.0" minWidth="580.0" prefHeight="130.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="130.0" maxWidth="1.7976931348623157E308" minHeight="130.0" minWidth="580.0" prefHeight="130.0" prefWidth="580.0" spacing="5.0" styleClass="login-header" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" fillWidth="false" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="580.0" prefHeight="100.0" prefWidth="580.0" styleClass="login-header-content" VBox.vgrow="NEVER" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
