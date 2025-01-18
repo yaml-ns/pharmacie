@@ -31,7 +31,7 @@
                   </Text>
                </children>
             </HBox>
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="448.0" prefWidth="220.0">
+            <VBox fx:id="buttonsList" alignment="TOP_CENTER" fillWidth="false" prefHeight="448.0" prefWidth="220.0">
                <children>
                   <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
                      <children>
@@ -55,7 +55,7 @@
                                  </padding>
                               </HBox>
                            </children></Pane>
-                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container" visible="false">
                            <children>
                               <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
                            </children>

@@ -36,8 +36,6 @@ public class LoginController implements Initializable {
     }
     @FXML
     protected void onLoginButton() {
-        System.out.println("username : " + usernameField.getText());
-        System.out.println("password : " + passwordField.getText());
         if (usernameField.getText().equals("admin") && passwordField.getText().equals("admin")){
             mainController.showDashboard();
         }
