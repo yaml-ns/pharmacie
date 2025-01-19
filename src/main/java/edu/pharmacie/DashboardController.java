@@ -13,7 +13,10 @@ public class DashboardController {
     @FXML
     private VBox buttonsList;
 
+    private HBox selectedItem;
+
     public void initialize(){
+        selectedItem = dashboardMenuButton;
         for (Node node : buttonsList.getChildren()) {
             if (node instanceof HBox hBox && hBox.getStyleClass().contains("left-menu-button")) {
                 hBox.setOnMouseClicked(this::handleMouseClick);
@@ -22,7 +25,13 @@ public class DashboardController {
     }
 
     private void handleMouseClick(MouseEvent event) {
-        System.out.println(event.getSource());
+        handleMenuItemsClasses((HBox) event.getSource());
+    }
+
+    private void handleMenuItemsClasses(HBox clickedMenuItem){
+        selectedItem.getStyleClass().remove("selected");
+        selectedItem = clickedMenuItem;
+        clickedMenuItem.getStyleClass().add("selected");
     }
 
 }

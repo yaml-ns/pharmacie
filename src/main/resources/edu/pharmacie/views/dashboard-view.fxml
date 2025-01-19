@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -33,7 +34,7 @@
             </HBox>
             <VBox fx:id="buttonsList" alignment="TOP_CENTER" fillWidth="false" prefHeight="448.0" prefWidth="220.0">
                <children>
-                  <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                  <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0">
                      <children>
                         <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
                            <children>
@@ -55,7 +56,7 @@
                                  </padding>
                               </HBox>
                            </children></Pane>
-                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container" visible="false">
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" opacity="0.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container">
                            <children>
                               <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
                            </children>
@@ -77,6 +78,10 @@
                      <VBox.margin>
                         <Insets bottom="15.0" top="10.0" />
                      </VBox.margin>
+                     <styleClass>
+                        <String fx:value="left-menu-button" />
+                        <String fx:value="selected" />
+                     </styleClass>
                   </HBox>
                   <HBox fillHeight="false" layoutX="20.0" layoutY="20.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
                      <children>
@@ -101,7 +106,7 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" opacity="0.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container">
                            <children>
                               <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
                            </children>
@@ -148,7 +153,7 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" opacity="0.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container">
                            <children>
                               <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
                            </children>
@@ -195,7 +200,7 @@
                               </HBox>
                            </children>
                         </Pane>
-                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" prefHeight="38.0" prefWidth="32.0">
+                        <Pane maxHeight="38.0" maxWidth="32.0" minHeight="38.0" minWidth="32.0" opacity="0.0" prefHeight="38.0" prefWidth="32.0" styleClass="dot-container">
                            <children>
                               <Pane layoutX="10.0" layoutY="14.0" prefHeight="10.0" prefWidth="10.0" styleClass="left-menu-button-dot" />
                            </children>
