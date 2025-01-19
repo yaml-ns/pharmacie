@@ -1,4 +1,4 @@
-package edu.pharmacie;
+package edu.pharmacie.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

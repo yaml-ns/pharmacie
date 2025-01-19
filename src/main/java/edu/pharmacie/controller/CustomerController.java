@@ -1,4 +1,4 @@
-package edu.pharmacie;
+package edu.pharmacie.controller;
 
 public class CustomerController {
 }

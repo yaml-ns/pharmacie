@@ -5,5 +5,5 @@
 <StackPane fx:id="mainContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="800.0"
            prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@../style.css"
            xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="edu.pharmacie.MainController">
+           fx:controller="edu.pharmacie.controller.MainController">
 </StackPane>
