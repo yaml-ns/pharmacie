@@ -42,10 +42,10 @@ public class AdminController {
         selectedItem = dashboardMenuButton;
         addMenuButtonListeners();
 
-        dashboardView = loadView("views/dashboard-view.fxml");
-        employeeView = loadView("views/employee-view.fxml");
-        drugView = loadView("views/drug-view.fxml");
-        customerView = loadView("views/customer-view.fxml");
+        dashboardView = loadView("/edu/pharmacie/views/dashboard-view.fxml");
+        employeeView = loadView("/edu/pharmacie/views/employee-view.fxml");
+        drugView = loadView("/edu/pharmacie/views/drug-view.fxml");
+        customerView = loadView("/edu/pharmacie/views/customer-view.fxml");
         currentView = dashboardView;
         adminViewContainer.getChildren().add(currentView);
 
