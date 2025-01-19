@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="580.0" prefHeight="500.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pharmacie.EmployeeController">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="580.0" prefHeight="500.0" prefWidth="580.0">
+         <bottom>
+            <VBox alignment="CENTER" prefHeight="84.0" prefWidth="580.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="278.0" prefWidth="580.0">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <top>
+            <VBox alignment="CENTER" maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="580.0" prefHeight="40.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="130.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="580.0" prefHeight="40.0" prefWidth="580.0" spacing="5.0" styleClass="login-header" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" fillWidth="false" maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="580.0" prefHeight="40.0" prefWidth="580.0" styleClass="login-header-content" VBox.vgrow="NEVER">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLYEES" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

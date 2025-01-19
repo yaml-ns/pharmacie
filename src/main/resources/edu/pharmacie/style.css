@@ -48,7 +48,7 @@
     -fx-background-color: #e7e7e7;
 }
 .left-menu-header {
-    -fx-background-color: #0A2A35;
+    -fx-background-color: rgba(10, 42, 53, 1);
 }
 .left-menu-button{
     -fx-background-color: #e7e7e7;
