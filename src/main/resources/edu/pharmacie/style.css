@@ -82,3 +82,18 @@
 .left-menu-button .dot-container {
     -fx-opacity: 0 !important;
 }
+
+.employeeTable {
+    -fx-background-color: rgba(29, 218, 183, 0);
+    -fx-padding: 0px;
+}
+/*.table-cell:odd {*/
+/*    -fx-background-color: rgba(67, 184, 222, 0.86);*/
+/*}*/
+/*.employeeTable .column-header {*/
+/*    -fx-background-color: #E7E7E7;*/
+/*    -fx-border-width: 0px 1px 0px 0px;*/
+/*    -fx-border-color: rgba(222, 67, 178, 0.86);;*/
+/*}*/
+
+
