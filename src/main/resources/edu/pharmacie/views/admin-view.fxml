@@ -18,9 +18,9 @@
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="250.0" minWidth="220.0" prefHeight="500.0" prefWidth="42.0" styleClass="left-menu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="220.0" spacing="85.0" styleClass="left-menu-header" VBox.vgrow="NEVER">
+            <HBox alignment="CENTER_LEFT" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="220.0" spacing="85.0" styleClass="left-menu-header" VBox.vgrow="NEVER">
                <children>
-                  <ImageView fitHeight="44.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../logo.jpeg" />
                      </image>
@@ -34,7 +34,7 @@
             </HBox>
             <VBox fx:id="buttonsList" alignment="TOP_CENTER" fillWidth="false" prefHeight="448.0" prefWidth="220.0">
                <children>
-                  <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0">
+                  <HBox fx:id="dashboardMenuButton" fillHeight="false" prefHeight="38.0" prefWidth="198.0" userData="dashboardView">
                      <children>
                         <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
                            <children>
@@ -83,7 +83,7 @@
                         <String fx:value="selected" />
                      </styleClass>
                   </HBox>
-                  <HBox fx:id="employeeMenuButton" fillHeight="false" layoutX="20.0" layoutY="20.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                  <HBox fx:id="employeeMenuButton" fillHeight="false" layoutX="20.0" layoutY="20.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button" userData="employeeView">
                      <children>
                         <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
                            <children>
@@ -130,7 +130,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="drugMenuButton" fillHeight="false" layoutX="20.0" layoutY="74.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                  <HBox fx:id="drugMenuButton" fillHeight="false" layoutX="20.0" layoutY="74.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button" userData="drugView">
                      <children>
                         <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
                            <children>
@@ -177,7 +177,7 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="customerMenuButton" fillHeight="false" layoutX="20.0" layoutY="128.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button">
+                  <HBox fx:id="customerMenuButton" fillHeight="false" layoutX="20.0" layoutY="128.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button" userData="customerView">
                      <children>
                         <Pane maxHeight="38.0" maxWidth="40.0" minHeight="38.0" minWidth="40.0" prefHeight="38.0" prefWidth="40.0">
                            <children>
