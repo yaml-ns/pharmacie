@@ -29,15 +29,47 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
         actionButton.getStyleClass().add("context-button");
 
         ContextMenu contextMenu = new ContextMenu();
-        MenuItem updateItem = new MenuItem("Update");
-        MenuItem deleteItem = new MenuItem("Delete");
-        contextMenu.getItems().addAll(updateItem, deleteItem);
+
+        MenuItem updateItem = new MenuItem("Modifier");
+
+        Image updateImage =new Image(Main.class.getResourceAsStream("/icons/menu-edit.png"));
+        ImageView updateIcon = new ImageView(updateImage);
+        updateIcon.setFitWidth(15);
+        updateIcon.setFitHeight(15);
+        updateItem.setGraphic(updateIcon);
+
+        MenuItem showItem = new MenuItem("Détails");
+
+        Image showImage =new Image(Main.class.getResourceAsStream("/icons/menu-show.png"));
+        ImageView showIcon = new ImageView(showImage);
+        showIcon.setFitWidth(15);
+        showIcon.setFitHeight(15);
+        showItem.setGraphic(showIcon);
+
+        MenuItem deleteItem = new MenuItem("Supprimer");
+
+        Image deleteImage =new Image(Main.class.getResourceAsStream("/icons/menu-red-delete.png"));
+        ImageView deleteIcon = new ImageView(deleteImage);
+        deleteIcon.setFitWidth(15);
+        deleteIcon.setFitHeight(15);
+        deleteItem.setGraphic(deleteIcon);
+        deleteItem.getStyleClass().add("menu-delete");
+        contextMenu.getItems().addAll(showItem,updateItem,deleteItem);
+
 
         actionButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            contextMenu.show(actionButton, event.getScreenX(), event.getScreenY());
+
+            double screenX = actionButton.localToScreen(actionButton.getBoundsInLocal()).getMinX();
+            double screenY = actionButton.localToScreen(actionButton.getBoundsInLocal()).getMaxY();
+
+            contextMenu.show(actionButton, screenX, screenY);
+
+            double adjustedX = screenX - contextMenu.getWidth() + (actionButton.getWidth()/2);
+            contextMenu.setX(adjustedX);
+            contextMenu.setY(screenY);
         });
 
-        updateItem.setOnAction(event -> {
+        showItem.setOnAction(event -> {
             Employee employee = getTableView().getItems().get(getIndex());
             System.out.println("UPDATE : " + employee);
 //            EventBus.getInstance().post(new EmployeeEvent(EmployeeEvent.UPDATE, employee));

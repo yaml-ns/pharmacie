@@ -178,3 +178,44 @@
 .context-button:hover {
     -fx-background-color: #f1f1f1;
 }
+
+.context-menu {
+    -fx-background-color: #f1f1f1;
+    -fx-background-radius: 5 5 5 5;
+    -fx-padding: 5;
+    -fx-border-radius:5 ;
+    -fx-min-width: 150;
+    -fx-cursor: hand;
+}
+.menu-item {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+.menu-item:hover {
+    -fx-background-color: #c9c9c9;
+}
+.menu-item:selected {
+    -fx-background-color: #c9c9c9;
+}
+.menu-item:selected{
+    -fx-text-fill: #000000 !important;
+
+}
+.menu-item:focused {
+    -fx-background-color: rgba(201, 201, 201, 0.4);
+}
+.menu-delete {
+    -fx-border-radius: 5;
+}
+.menu-delete .label{
+    -fx-text-fill: red !important;
+}
+.menu-delete:hover {
+    -fx-background-color: #690000;
+}
+.menu-delete:hover .label{
+    -fx-text-fill: #f1f1f1 !important;
+}
+.menu-item:focused .label {
+    -fx-text-fill: #000000;
+}
