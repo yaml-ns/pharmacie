@@ -16,4 +16,6 @@ module edu.pharmacie.pharmacie {
     exports edu.pharmacie;
     exports edu.pharmacie.controller;
     opens edu.pharmacie.controller to javafx.fxml;
+    exports edu.pharmacie.event;
+    opens edu.pharmacie.event to javafx.fxml;
 }
