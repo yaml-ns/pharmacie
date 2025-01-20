@@ -14,7 +14,7 @@ public class EmployeeController {
     private EmployeeEventManager eventManager = new EmployeeEventManager();
 
     public void initialize(){
-        EmployeeTableView tableView = new EmployeeTableView();
+        EmployeeTableView tableView = new EmployeeTableView(eventManager);
         mainContainer.getChildren().add(tableView.getTableView());
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
@@ -23,15 +23,15 @@ public class EmployeeController {
     }
 
     private void handleDelete(EmployeeEvent employeeEvent) {
-        System.out.println("DELETE " + employeeEvent);
+        System.out.println("DELETE " + employeeEvent.getEmployee());
     }
 
     private void handleUpdate(EmployeeEvent employeeEvent) {
-        System.out.println("UPDATE " + employeeEvent);
+        System.out.println("UPDATE " + employeeEvent.getEmployee());
     }
 
     private void handleCreate(EmployeeEvent employeeEvent) {
-        System.out.println("CREATE " + employeeEvent);
+        System.out.println("CREATE " + employeeEvent.getEmployee());
     }
 
     public EmployeeEventManager getEventManager(){

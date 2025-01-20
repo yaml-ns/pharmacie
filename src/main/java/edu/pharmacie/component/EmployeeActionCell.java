@@ -12,7 +12,8 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
     private HBox actions;
 
     private EmployeeEventManager eventManager;
-    public EmployeeActionCell(){
+    public EmployeeActionCell(EmployeeEventManager eventManager){
+        this.eventManager = eventManager;
         actions = new HBox();
         Button update = new Button("M");
         Button delete = new Button("S");
@@ -23,7 +24,7 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
         });
         delete.setOnAction(event -> {
             Employee employee = getTableView().getItems().get(getIndex());
-            eventManager.fireEmployeeEvent(EmployeeEvent.UPDATE, employee);
+            eventManager.fireEmployeeEvent(EmployeeEvent.DELETE, employee);
         });
     }
 

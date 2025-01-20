@@ -1,5 +1,6 @@
 package edu.pharmacie.component;
 
+import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Connection;
 import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.service.DataFixtures;
@@ -15,8 +16,10 @@ import javafx.scene.control.TableView;
 public class EmployeeTableView extends TableView<Employee> {
 
     private TableView<Employee> tableView;
+    private EmployeeEventManager eventManager;
 
-    public EmployeeTableView(){
+    public EmployeeTableView(EmployeeEventManager eventManager){
+        this.eventManager = eventManager;
         ObservableList<Employee> employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
 
         TableView<Employee> tableView = new TableView<>(employees);
@@ -57,7 +60,7 @@ public class EmployeeTableView extends TableView<Employee> {
         });
 
         TableColumn<Employee, Void> actionColumn = new TableColumn<>("Action");
-        actionColumn.setCellFactory(col-> new EmployeeActionCell());
+        actionColumn.setCellFactory(col-> new EmployeeActionCell(eventManager));
 
         tableView.getColumns().addAll(idColumn,firstNameColumn, lastNameColumn,emailColumn, functionColumn, salaryColumn, hoursColumn,roleColumn,activeColumn,actionColumn);
         tableView.getStyleClass().add("employeeTable");
