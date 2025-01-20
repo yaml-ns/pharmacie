@@ -46,7 +46,7 @@ public class AdminController {
         employeeView = loadView("/edu/pharmacie/views/employee-view.fxml");
         drugView = loadView("/edu/pharmacie/views/drug-view.fxml");
         customerView = loadView("/edu/pharmacie/views/customer-view.fxml");
-        currentView = dashboardView;
+        currentView = employeeView;
         adminViewContainer.getChildren().add(currentView);
 
     }

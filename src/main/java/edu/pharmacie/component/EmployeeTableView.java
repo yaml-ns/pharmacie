@@ -23,7 +23,7 @@ public class EmployeeTableView extends TableView<Employee> {
         ObservableList<Employee> employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
 
         TableView<Employee> tableView = new TableView<>(employees);
-//        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         TableColumn<Employee, Long> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getId()).asObject());
         TableColumn<Employee, String> firstNameColumn = new TableColumn<>("Prénom");

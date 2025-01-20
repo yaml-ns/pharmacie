@@ -19,7 +19,7 @@ public class MainController {
 
                loginView = loginLoader.load();
                adminView = adminLoader.load();
-               adminView.setVisible(false);
+               loginView.setVisible(false);
 
                LoginController loginController = loginLoader.getController();
                loginController.setMainController(this);
