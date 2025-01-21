@@ -95,4 +95,8 @@ public class DataFixtures {
         return employees;
     }
 
+    public  void removeEmployee(Long id){
+        employees.removeIf(employee -> employee.getId().equals(id));
+    }
+
 }

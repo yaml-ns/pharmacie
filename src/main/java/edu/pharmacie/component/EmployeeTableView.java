@@ -18,9 +18,11 @@ public class EmployeeTableView extends TableView<Employee> {
     private TableView<Employee> tableView;
     private EmployeeEventManager eventManager;
 
+    private ObservableList<Employee> employees;
+
     public EmployeeTableView(EmployeeEventManager eventManager){
         this.eventManager = eventManager;
-        ObservableList<Employee> employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
+        employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
 
         TableView<Employee> tableView = new TableView<>(employees);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
@@ -69,5 +71,9 @@ public class EmployeeTableView extends TableView<Employee> {
 
     public TableView<Employee> getTableView(){
         return tableView;
+    }
+
+    public ObservableList<Employee> getEmployees(){
+        return employees;
     }
 }
