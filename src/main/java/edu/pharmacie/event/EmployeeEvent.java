@@ -7,6 +7,7 @@ import javafx.event.EventType;
 public class EmployeeEvent extends Event {
 
     public static final EventType<EmployeeEvent> ANY = new EventType<>(Event.ANY, "EMPLOYEE_EVENT");
+    public static final EventType<EmployeeEvent> SHOW = new EventType<>(ANY, "EMPLOYEE_SHOW");
     public static final EventType<EmployeeEvent> CREATE = new EventType<>(ANY, "EMPLOYEE_CREATE");
     public static final EventType<EmployeeEvent> UPDATE = new EventType<>(ANY, "EMPLOYEE_UPDATE");
     public static final EventType<EmployeeEvent> DELETE = new EventType<>(ANY, "EMPLOYEE_DELETE");

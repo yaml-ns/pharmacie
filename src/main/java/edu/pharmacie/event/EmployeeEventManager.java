@@ -9,6 +9,7 @@ public class EmployeeEventManager {
     private EventHandler<EmployeeEvent> createEventHandler;
     private EventHandler<EmployeeEvent> updateEventHandler;
     private EventHandler<EmployeeEvent> deleteEventHandler;
+    private EventHandler<EmployeeEvent> showEventHandler;
 
     public void addCreateListener(EventHandler<EmployeeEvent> handler) {
         this.createEventHandler = handler;
@@ -20,6 +21,9 @@ public class EmployeeEventManager {
 
     public void addDeleteListener(EventHandler<EmployeeEvent> handler) {
         this.deleteEventHandler = handler;
+    }
+    public void addShowListener(EventHandler<EmployeeEvent> handler) {
+        this.showEventHandler = handler;
     }
 
     public void fireEmployeeEvent(EventType<EmployeeEvent> eventType, Employee employee) {
@@ -35,6 +39,10 @@ public class EmployeeEventManager {
                     updateEventHandler.handle(event);
                 }
                 break;
+            case "EMPLOYEE_SHOW":
+                if (showEventHandler != null) {
+                    showEventHandler.handle(event);
+                }
             case "EMPLOYEE_DELETE":
                 if (deleteEventHandler != null) {
                     deleteEventHandler.handle(event);

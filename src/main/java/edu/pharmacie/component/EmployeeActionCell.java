@@ -4,10 +4,7 @@ import edu.pharmacie.Main;
 import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Employee;
-import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableCell;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -54,7 +51,9 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
         deleteIcon.setFitHeight(15);
         deleteItem.setGraphic(deleteIcon);
         deleteItem.getStyleClass().add("menu-delete");
-        contextMenu.getItems().addAll(showItem,updateItem,deleteItem);
+
+        SeparatorMenuItem separator = new SeparatorMenuItem();
+        contextMenu.getItems().addAll(showItem,updateItem,separator,deleteItem);
 
 
         actionButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -71,14 +70,16 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
 
         showItem.setOnAction(event -> {
             Employee employee = getTableView().getItems().get(getIndex());
-            System.out.println("UPDATE : " + employee);
-//            EventBus.getInstance().post(new EmployeeEvent(EmployeeEvent.UPDATE, employee));
+            eventManager.fireEmployeeEvent(EmployeeEvent.SHOW,employee);
+        });
+        updateItem.setOnAction(event -> {
+            Employee employee = getTableView().getItems().get(getIndex());
+            eventManager.fireEmployeeEvent(EmployeeEvent.UPDATE,employee);
         });
 
         deleteItem.setOnAction(event -> {
             Employee employee = getTableView().getItems().get(getIndex());
-//            EventBus.getInstance().post(new EmployeeEvent(EmployeeEvent.DELETE, employee));
-            System.out.println("UPDATE : " + employee);
+            eventManager.fireEmployeeEvent(EmployeeEvent.DELETE, employee);
         });
 
         actions.getChildren().add(actionButton);
