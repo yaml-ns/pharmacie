@@ -7,7 +7,12 @@ import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.service.DataFixtures;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
+import javafx.stage.StageStyle;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EmployeeController {
 
@@ -28,14 +33,38 @@ public class EmployeeController {
 
     }
 
+    private boolean showConfirmationDialog() {
+        AtomicBoolean confirm = new AtomicBoolean(false);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.initStyle(StageStyle.UNDECORATED);
+        alert.setHeaderText("Confirmer la suppression");
+        alert.setGraphic(null);
+        alert.setContentText("Êtes-vous vraiment sûr de vouloir continuer ?");
+
+        // Optionally, you can customize the buttons
+        ButtonType yesButton = new ButtonType("Oui, je veux supprimer");
+        ButtonType noButton = new ButtonType("Non");
+        alert.getButtonTypes().setAll(yesButton, noButton);
+
+        // Show the dialog and wait for the user's response
+        alert.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                confirm.set(true);
+            }
+        });
+        return confirm.getPlain();
+    }
     private void handleDelete(EmployeeEvent employeeEvent) {
-        for (Employee employee : employeeList){
-            if (employee.getId().equals(employeeEvent.getEmployee().getId())){
-                DataFixtures.getInstance().removeEmployee(employeeEvent.getEmployee().getId());
-                employeeList.remove(employee);
-                return;
+        if (showConfirmationDialog()){
+            for (Employee employee : employeeList){
+                if (employee.getId().equals(employeeEvent.getEmployee().getId())){
+                    DataFixtures.getInstance().removeEmployee(employeeEvent.getEmployee().getId());
+                    employeeList.remove(employee);
+                    return;
+                }
             }
         }
+
     }
 
     private void handleUpdate(EmployeeEvent employeeEvent) {
