@@ -15,13 +15,11 @@ import javafx.scene.control.TableView;
 
 public class EmployeeTableView extends TableView<Employee> {
 
-    private TableView<Employee> tableView;
-    private EmployeeEventManager eventManager;
+    private final TableView<Employee> tableView;
 
-    private ObservableList<Employee> employees;
+    private final ObservableList<Employee> employees;
 
     public EmployeeTableView(EmployeeEventManager eventManager){
-        this.eventManager = eventManager;
         employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
 
         TableView<Employee> tableView = new TableView<>(employees);
@@ -64,7 +62,18 @@ public class EmployeeTableView extends TableView<Employee> {
         TableColumn<Employee, Void> actionColumn = new TableColumn<>("Action");
         actionColumn.setCellFactory(col-> new EmployeeActionCell(eventManager));
 
-        tableView.getColumns().addAll(idColumn,firstNameColumn, lastNameColumn,emailColumn, functionColumn, salaryColumn, hoursColumn,roleColumn,activeColumn,actionColumn);
+        tableView.getColumns().addAll(
+                idColumn,
+                firstNameColumn,
+                lastNameColumn,
+                emailColumn,
+                functionColumn,
+                salaryColumn,
+                hoursColumn,
+                roleColumn,
+                activeColumn,
+                actionColumn
+        );
         tableView.getStyleClass().add("employeeTable");
         this.tableView = tableView;
     }
