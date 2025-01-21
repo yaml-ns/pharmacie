@@ -43,6 +43,7 @@ public class EmployeeEventManager {
                 if (showEventHandler != null) {
                     showEventHandler.handle(event);
                 }
+                break;
             case "EMPLOYEE_DELETE":
                 if (deleteEventHandler != null) {
                     deleteEventHandler.handle(event);

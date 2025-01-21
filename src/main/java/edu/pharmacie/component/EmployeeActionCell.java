@@ -69,6 +69,7 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
         });
 
         showItem.setOnAction(event -> {
+            System.out.println("SHOW ITEM CLICKED");
             Employee employee = getTableView().getItems().get(getIndex());
             eventManager.fireEmployeeEvent(EmployeeEvent.SHOW,employee);
         });

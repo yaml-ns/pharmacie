@@ -16,7 +16,7 @@ public class EmployeeController {
     public void initialize(){
         EmployeeTableView tableView = new EmployeeTableView(eventManager);
         mainContainer.getChildren().add(tableView.getTableView());
-        eventManager.addCreateListener(this::handleShow);
+        eventManager.addShowListener(this::handleShow);
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
         eventManager.addDeleteListener(this::handleDelete);
