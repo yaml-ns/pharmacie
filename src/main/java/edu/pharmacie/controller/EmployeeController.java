@@ -11,11 +11,12 @@ public class EmployeeController {
     @FXML
     private VBox mainContainer;
 
-    private EmployeeEventManager eventManager = new EmployeeEventManager();
+    private final EmployeeEventManager eventManager = new EmployeeEventManager();
 
     public void initialize(){
         EmployeeTableView tableView = new EmployeeTableView(eventManager);
         mainContainer.getChildren().add(tableView.getTableView());
+        eventManager.addCreateListener(this::handleShow);
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
         eventManager.addDeleteListener(this::handleDelete);
@@ -32,6 +33,9 @@ public class EmployeeController {
 
     private void handleCreate(EmployeeEvent employeeEvent) {
         System.out.println("CREATE " + employeeEvent.getEmployee());
+    }
+ private void handleShow(EmployeeEvent employeeEvent) {
+        System.out.println("SHOW " + employeeEvent.getEmployee());
     }
 
     public EmployeeEventManager getEventManager(){
