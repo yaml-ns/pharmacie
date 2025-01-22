@@ -85,12 +85,12 @@ public class EmployeeController {
     private void handleUpdate(EmployeeEvent employeeEvent){
         try {
             Stage employeeFormModal = new Stage();
-            FXMLLoader loader = new FXMLLoader(edu.pharmacie.Main.class.getResource("views/parts/employee-form-modal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/pharmacie/views/parts/employee-form-modal.fxml"));
             Scene scene = new Scene(loader.load());
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
             employeeFormModal.setScene(scene);
 
-            populateFields(employeeEvent.getEmployee());
+//            populateFields(employeeEvent.getEmployee());
 
             employeeFormModal.showAndWait();
         }catch (Exception e){
