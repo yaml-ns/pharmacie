@@ -4,18 +4,17 @@ import edu.pharmacie.component.EmployeeTableView;
 import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Employee;
+import edu.pharmacie.model.entity.Function;
 import edu.pharmacie.service.DataFixtures;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EmployeeController {
@@ -23,6 +22,20 @@ public class EmployeeController {
     @FXML
     private VBox mainContainer;
 
+    @FXML
+    private TextField firstnameField;
+    @FXML
+    private TextField lastnameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private ListView<Function> functionField;
+    @FXML
+    private TextField salaryField;
+    @FXML
+    private TextField hoursPerWeekField;
+    @FXML
+    private CheckBox isActiveField;
     private final EmployeeEventManager eventManager = new EmployeeEventManager();
     private ObservableList<Employee> employeeList;
 
@@ -74,13 +87,24 @@ public class EmployeeController {
             Stage employeeFormModal = new Stage();
             FXMLLoader loader = new FXMLLoader(edu.pharmacie.Main.class.getResource("views/parts/employee-form-modal.fxml"));
             Scene scene = new Scene(loader.load());
-            employeeFormModal.setTitle("Modifier de l'employé '"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname());
+            employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
             employeeFormModal.setScene(scene);
+
+            populateFields(employeeEvent.getEmployee());
+
             employeeFormModal.showAndWait();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
         System.out.println("UPDATE " + employeeEvent.getEmployee());
+    }
+
+    private void populateFields(Employee employee) {
+            firstnameField.setText(employee.getFirstname());
+            lastnameField.setText(employee.getLastname());
+            emailField.setText(employee.getConnection().getEmail());
+            salaryField.setText(String.valueOf(employee.getSalary()));
+            isActiveField.setSelected(employee.getConnection().isActive());
     }
 
     private void handleCreate(EmployeeEvent employeeEvent) {
