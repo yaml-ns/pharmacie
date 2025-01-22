@@ -7,11 +7,15 @@ import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.service.DataFixtures;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EmployeeController {
@@ -41,12 +45,10 @@ public class EmployeeController {
         alert.setGraphic(null);
         alert.setContentText("Êtes-vous vraiment sûr de vouloir continuer ?");
 
-        // Optionally, you can customize the buttons
         ButtonType yesButton = new ButtonType("Oui, je veux supprimer");
         ButtonType noButton = new ButtonType("Non");
         alert.getButtonTypes().setAll(yesButton, noButton);
 
-        // Show the dialog and wait for the user's response
         alert.showAndWait().ifPresent(response -> {
             if (response == yesButton) {
                 confirm.set(true);
@@ -67,7 +69,17 @@ public class EmployeeController {
 
     }
 
-    private void handleUpdate(EmployeeEvent employeeEvent) {
+    private void handleUpdate(EmployeeEvent employeeEvent){
+        try {
+            Stage employeeFormModal = new Stage();
+            FXMLLoader loader = new FXMLLoader(edu.pharmacie.Main.class.getResource("views/parts/employee-form-modal.fxml"));
+            Scene scene = new Scene(loader.load());
+            employeeFormModal.setTitle("Modifier de l'employé '"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname());
+            employeeFormModal.setScene(scene);
+            employeeFormModal.showAndWait();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         System.out.println("UPDATE " + employeeEvent.getEmployee());
     }
 
