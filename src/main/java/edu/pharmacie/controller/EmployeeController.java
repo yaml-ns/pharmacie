@@ -4,7 +4,6 @@ import edu.pharmacie.component.EmployeeTableView;
 import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Employee;
-import edu.pharmacie.model.entity.Function;
 import edu.pharmacie.service.DataFixtures;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,20 +21,6 @@ public class EmployeeController {
     @FXML
     private VBox mainContainer;
 
-    @FXML
-    private TextField firstnameField;
-    @FXML
-    private TextField lastnameField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private ListView<Function> functionField;
-    @FXML
-    private TextField salaryField;
-    @FXML
-    private TextField hoursPerWeekField;
-    @FXML
-    private CheckBox isActiveField;
     private final EmployeeEventManager eventManager = new EmployeeEventManager();
     private ObservableList<Employee> employeeList;
 
@@ -87,11 +72,10 @@ public class EmployeeController {
             Stage employeeFormModal = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/pharmacie/views/parts/employee-form-modal.fxml"));
             Scene scene = new Scene(loader.load());
+            EmployeeFormController controller = loader.getController();
+            controller.initFields(employeeEvent.getEmployee());
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
             employeeFormModal.setScene(scene);
-
-//            populateFields(employeeEvent.getEmployee());
-
             employeeFormModal.showAndWait();
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -99,13 +83,7 @@ public class EmployeeController {
         System.out.println("UPDATE " + employeeEvent.getEmployee());
     }
 
-    private void populateFields(Employee employee) {
-            firstnameField.setText(employee.getFirstname());
-            lastnameField.setText(employee.getLastname());
-            emailField.setText(employee.getConnection().getEmail());
-            salaryField.setText(String.valueOf(employee.getSalary()));
-            isActiveField.setSelected(employee.getConnection().isActive());
-    }
+
 
     private void handleCreate(EmployeeEvent employeeEvent) {
         System.out.println("CREATE " + employeeEvent.getEmployee());

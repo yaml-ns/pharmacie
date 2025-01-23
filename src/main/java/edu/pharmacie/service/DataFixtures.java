@@ -13,6 +13,7 @@ public class DataFixtures {
 
     private static DataFixtures instance;
     private List<Employee> employees;
+    private List<Function> functions;
     public static DataFixtures getInstance() {
         if (instance == null) {
             synchronized (DataFixtures.class) {
@@ -26,6 +27,7 @@ public class DataFixtures {
 
     private  DataFixtures(){
         employees = new ArrayList<>();
+        functions = new ArrayList<>();
 
         Role adminRole = Role.ADMIN;
         Role drugManagerRole = Role.DRUG_MANAGER;
@@ -35,7 +37,9 @@ public class DataFixtures {
         Function managerFunction = Function.MANAGER;
         Function pharmacistFunction = Function.PHARMACIST;
         Function sellerFunction = Function.SELLER;
-
+        functions.add(managerFunction);
+        functions.add(pharmacistFunction);
+        functions.add(sellerFunction);
 
         Connection conn1 = new Connection(1L, "admin@pharmacie.com", "admin123", adminRole, true);
         Connection conn2 = new Connection(2L, "drugmanager@pharmacie.com", "drug123", drugManagerRole, true);
@@ -95,6 +99,9 @@ public class DataFixtures {
         return employees;
     }
 
+    public List<Function> getFunctions(){
+        return functions;
+    }
     public  void removeEmployee(Long id){
         employees.removeIf(employee -> employee.getId().equals(id));
     }
