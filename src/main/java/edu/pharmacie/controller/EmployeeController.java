@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,7 +20,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class EmployeeController {
 
     @FXML
-    private VBox mainContainer;
+    private BorderPane mainContainer;
+
+    @FXML
+    private VBox tableContainer;
+
+    @FXML
+    private VBox tableHeader;
 
     private final EmployeeEventManager eventManager = new EmployeeEventManager();
     private ObservableList<Employee> employeeList;
@@ -27,7 +34,8 @@ public class EmployeeController {
     public void initialize(){
         EmployeeTableView tableView = new EmployeeTableView(eventManager);
         employeeList = tableView.getEmployees();
-        mainContainer.getChildren().add(tableView.getTableView());
+        tableContainer.getChildren().add(tableView.getTableView());
+        VBox.setVgrow(tableView, javafx.scene.layout.Priority.ALWAYS);
         eventManager.addShowListener(this::handleShow);
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
