@@ -1,6 +1,7 @@
 package edu.pharmacie.model.entity;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Employee extends User {
 
@@ -63,5 +64,27 @@ public class Employee extends User {
                 ", function='" + function + '\'' +
                 ", hoursPerWeek=" + hoursPerWeek +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee employee)) return false;
+        return (
+                employee.getFirstname().equals(this.getFirstname()) &&
+                employee.getLastname().equals(this.getLastname()) &&
+                employee.getAddress().equals(this.getAddress()) &&
+                employee.getPhoneNumber().equals(this.getPhoneNumber()) &&
+                employee.getDateOfBirth().equals(this.getDateOfBirth()) &&
+                employee.getDateOfHiring().equals(this.dateOfHiring) &&
+                employee.getSalary() == this.salary &&
+                employee.getFunction() == this.function &&
+                employee.getHoursPerWeek() == this.hoursPerWeek
+                );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dateOfHiring, salary, function, hoursPerWeek);
     }
 }
