@@ -72,6 +72,30 @@ public class EmployeeFormController {
             formErrors.getChildren().add(error);
             errors++;
         }
+        if (emailField.getText().isBlank()){
+            emailField.getStyleClass().add("form-error");
+            Label error = new Label("L'email est obligatoire");
+            formErrors.getChildren().add(error);
+            errors++;
+        }
+        if (salaryField.getText().isBlank()){
+            salaryField.getStyleClass().add("form-error");
+            Label error = new Label("Le salaire est obligatoire");
+            formErrors.getChildren().add(error);
+            errors++;
+        }
+        if (hoursPerWeekField.getText().isBlank()){
+            hoursPerWeekField.getStyleClass().add("form-error");
+            Label error = new Label("Les heures / semaine est obligatoire");
+            formErrors.getChildren().add(error);
+            errors++;
+        }
+        if (functionField.getSelectionModel().getSelectedItem() == null){
+            functionField.getStyleClass().add("form-error");
+            Label error = new Label("La fonction est obligatoire");
+            formErrors.getChildren().add(error);
+            errors++;
+        }
         return errors == 0;
     }
     private void resetFieldStyles() {
