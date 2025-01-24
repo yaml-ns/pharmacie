@@ -61,12 +61,12 @@
     <bottom>
         <HBox alignment="CENTER" prefHeight="57.0" prefWidth="450.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="employeeResetButton" mnemonicParsing="false" text="Réinitialiser" onAction="#onReset">
+                <Button fx:id="employeeResetButton" mnemonicParsing="false" onAction="#onReset" text="Réinitialiser">
                     <HBox.margin>
                         <Insets right="20.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="employeeProcessButton" mnemonicParsing="false" text="Enregistrer" onAction="#onProcess" />
+                <Button fx:id="employeeProcessButton" mnemonicParsing="false" onAction="#onProcess" text="Enregistrer" />
             </children>
             <BorderPane.margin>
                 <Insets />
@@ -74,6 +74,9 @@
         </HBox>
     </bottom>
     <top>
-        <VBox prefHeight="80.0" prefWidth="450.0" BorderPane.alignment="CENTER" />
+        <VBox fx:id="formErrors" maxHeight="1.7976931348623157E308" maxWidth="450.0" minWidth="450.0" prefHeight="80.0" prefWidth="450.0" BorderPane.alignment="BOTTOM_CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin></VBox>
     </top>
 </BorderPane>

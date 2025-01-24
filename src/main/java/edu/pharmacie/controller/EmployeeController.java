@@ -80,6 +80,7 @@ public class EmployeeController {
             Stage employeeFormModal = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/pharmacie/views/parts/employee-form-modal.fxml"));
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(edu.pharmacie.Main.class.getResource("style.css").toExternalForm());
             EmployeeFormController controller = loader.getController();
             controller.initFields(employeeEvent.getEmployee());
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
