@@ -1,5 +1,6 @@
 package edu.pharmacie.controller;
 
+import edu.pharmacie.component.ErrorLabel;
 import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.model.entity.Function;
 import edu.pharmacie.service.DataFixtures;
@@ -61,39 +62,39 @@ public class EmployeeFormController {
         int errors = 0;
         if (firstnameField.getText().isBlank()){
             firstnameField.getStyleClass().add("form-error");
-            Label error = new Label("Le prénom est obligatoire");
+            Label error = new ErrorLabel("Le prénom est obligatoire");
             formErrors.getChildren().add(error);
-            System.out.println(firstnameField.getStyleClass());
             errors++;
         }
         if (lastnameField.getText().isBlank()){
             lastnameField.getStyleClass().add("form-error");
-            Label error = new Label("Le nom est obligatoire");
+            Label error = new ErrorLabel("Le nom est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (emailField.getText().isBlank()){
             emailField.getStyleClass().add("form-error");
-            Label error = new Label("L'email est obligatoire");
+            Label error = new ErrorLabel("L'email est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (salaryField.getText().isBlank()){
             salaryField.getStyleClass().add("form-error");
-            Label error = new Label("Le salaire est obligatoire");
+            Label error = new ErrorLabel("Le salaire est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (hoursPerWeekField.getText().isBlank()){
             hoursPerWeekField.getStyleClass().add("form-error");
-            Label error = new Label("Les heures / semaine est obligatoire");
+            Label error = new ErrorLabel("Les heures / semaine est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (functionField.getSelectionModel().getSelectedItem() == null){
             functionField.getStyleClass().add("form-error");
-            Label error = new Label("La fonction est obligatoire");
+            Label error = new ErrorLabel("La fonction est obligatoire");
             formErrors.getChildren().add(error);
+
             errors++;
         }
         return errors == 0;
@@ -108,7 +109,7 @@ public class EmployeeFormController {
     }
 
     private void cleanErrors(){
-        formErrors.getChildren().clear();
+        formErrors.getChildren().removeAll();
     }
 
     @FXML
@@ -136,7 +137,7 @@ public class EmployeeFormController {
             if (validateForm()){
                 System.out.println("form valid");
             }else{
-            System.out.println("not valid");
+                System.out.println("not valid");
             }
 
         }else{
