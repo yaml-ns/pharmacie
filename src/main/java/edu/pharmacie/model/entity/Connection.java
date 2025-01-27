@@ -9,6 +9,10 @@ public class Connection {
 
     private User user;
 
+
+    public Connection(){
+
+    }
     public Connection(Long id, String email, String password, Role role, boolean isActive) {
         this.id = id;
         this.email = email;

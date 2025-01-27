@@ -3,9 +3,7 @@ package edu.pharmacie.controller;
 import edu.pharmacie.component.ErrorLabel;
 import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
-import edu.pharmacie.model.entity.Connection;
-import edu.pharmacie.model.entity.Employee;
-import edu.pharmacie.model.entity.Function;
+import edu.pharmacie.model.entity.*;
 import edu.pharmacie.service.DataFixtures;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -13,8 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import net.synedra.validatorfx.Validator;
-import org.controlsfx.validation.ValidationSupport;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class EmployeeFormController {
     private Employee employee;
@@ -43,7 +42,6 @@ public class EmployeeFormController {
 
     public void initFields(Employee employee) {
         this.employee = employee;
-        System.out.println(functionField.getStyleClass());
         populateFields();
     }
 
@@ -52,18 +50,22 @@ public class EmployeeFormController {
     }
     private void populateFields(){
 
-        firstnameField.setText(employee.getFirstname());
-        lastnameField.setText(employee.getLastname());
-        emailField.setText(employee.getConnection().getEmail());
-        salaryField.setText(String.valueOf(employee.getSalary()));
-        isActiveField.setSelected(employee.getConnection().isActive());
-        hoursPerWeekField.setText(String.valueOf(employee.getHoursPerWeek()));
-        functionField.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getFunctions()));
-        functionField.getSelectionModel().select(employee.getFunction());
+        if (employee != null){
+            firstnameField.setText(employee.getFirstname());
+            lastnameField.setText(employee.getLastname());
+            emailField.setText(employee.getConnection().getEmail());
+            salaryField.setText(String.valueOf(employee.getSalary()));
+            isActiveField.setSelected(employee.getConnection().isActive());
+            hoursPerWeekField.setText(String.valueOf(employee.getHoursPerWeek()));
+            functionField.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getFunctions()));
+            functionField.getSelectionModel().select(employee.getFunction());
+        }
 
+        functionField.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getFunctions()));
     }
 
     protected boolean validateForm(){
+
         resetFieldStyles();
         int errors = 0;
         if (firstnameField.getText().isBlank()){
@@ -140,9 +142,10 @@ public class EmployeeFormController {
     @FXML
     protected void onProcess(){
         cleanErrors();
-        if (employee != null){
 
-            if (validateForm()){
+        if (validateForm()){
+
+            if (employee != null){
                 Connection connection = employee.getConnection();
                 Connection updatedConnection = new Connection(
                         connection.getId(),
@@ -169,10 +172,41 @@ public class EmployeeFormController {
 
                 this.eventManager.fireEmployeeEvent(EmployeeEvent.UPDATE,employee);
                 ((Stage) firstnameField.getScene().getWindow()).close();
+            }else{
+                User user = new User();
+                user.setAddress("Nouvelle adresse");
+                user.setFirstname(firstnameField.getText());
+                user.setLastname(lastnameField.getText());
+                user.setPhoneNumber("438 529-5544");
+                user.setDateOfBirth(new Date(2000, Calendar.JANUARY,27));
+                Connection connection = new Connection();
+                connection.setActive(isActiveField.isSelected());
+                connection.setEmail(emailField.getText());
+                connection.setPassword("motdepass");
+                connection.setRole(Role.ADMIN);
+                connection.setUser(user);
+                Employee newEmployee = new Employee(
+                        null,
+                        user.getFirstname(),
+                        user.getLastname(),
+                        user.getAddress(),
+                        user.getPhoneNumber(),
+                        user.getDateOfBirth(),
+                        new Date(),
+                        Double.parseDouble(salaryField.getText()),
+                        functionField.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(hoursPerWeekField.getText()
+                        )
+                );
+                newEmployee.setConnection(connection);
+
+                DataFixtures.getInstance().addEmployee(newEmployee);
+                this.eventManager.fireEmployeeEvent(EmployeeEvent.CREATE,newEmployee);
+                ((Stage) firstnameField.getScene().getWindow()).close();
             }
 
-        }else{
-            System.out.println("ajouter");
         }
     }
+
+
 }

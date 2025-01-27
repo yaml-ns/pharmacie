@@ -14,9 +14,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.w3c.dom.events.MouseEvent;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -41,6 +43,13 @@ public class EmployeeController {
         employeeList = tableView.getEmployees();
         tableContainer.getChildren().add(tableView);
         VBox.setVgrow(tableView, javafx.scene.layout.Priority.ALWAYS);
+
+        HBox headerItems = new HBox();
+        Button addEmployeeButton = new Button("Ajouter");
+        addEmployeeButton.setOnAction(event -> handleAddButtonAction());
+        headerItems.getChildren().add(addEmployeeButton);
+        tableHeader.getChildren().add(headerItems);
+
         eventManager.addShowListener(this::handleShow);
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
@@ -48,6 +57,8 @@ public class EmployeeController {
         eventManager.addDeleteListener(this::handleDelete);
 
     }
+
+
 
     private boolean showConfirmationDialog() {
         AtomicBoolean confirm = new AtomicBoolean(false);
@@ -90,8 +101,13 @@ public class EmployeeController {
             scene.getStylesheets().add(edu.pharmacie.Main.class.getResource("style.css").toExternalForm());
             EmployeeFormController controller = loader.getController();
             controller.setEventManager(eventManager);
+            Employee employee = employeeEvent.getEmployee();
             controller.initFields(employeeEvent.getEmployee());
+            if (employee != null){
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
+            }else{
+            employeeFormModal.setTitle("Ajouter un nouvel employé ");
+            }
             employeeFormModal.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("logo.jpeg"))));
             employeeFormModal.setScene(scene);
             employeeFormModal.showAndWait();
@@ -101,16 +117,16 @@ public class EmployeeController {
     }
 
     private void handleUpdate(EmployeeEvent employeeEvent){
-        System.out.println("WHERE ARE HERE");
-        System.out.println(DataFixtures.getInstance().getEmployees());
         tableView.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees()));
         tableView.refresh();
     }
 
     private void handleCreate(EmployeeEvent employeeEvent) {
-        System.out.println("CREATE " + employeeEvent.getEmployee());
+        tableView.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees()));
+        tableView.refresh();
+
     }
- private void handleShow(EmployeeEvent employeeEvent) {
+    private void handleShow(EmployeeEvent employeeEvent) {
         System.out.println("SHOW " + employeeEvent.getEmployee());
     }
 
@@ -118,4 +134,10 @@ public class EmployeeController {
         return eventManager;
     }
 
+    private void handleAddButtonAction() {
+        this.handleOpenDialog(new EmployeeEvent(EmployeeEvent.OPEN_DIALOG, null));
+    }
+
 }
+
+

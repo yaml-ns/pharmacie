@@ -8,6 +8,7 @@ import edu.pharmacie.model.entity.Role;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class DataFixtures {
 
@@ -104,6 +105,7 @@ public class DataFixtures {
     }
 
     public void addEmployee(Employee employee){
+        employee.setId(Long.valueOf(employees.size() + 1));
         employees.add(employee);
     }
     public void updateEmployee(Employee updatedEmployee){

@@ -13,6 +13,10 @@ public class User {
     private Connection connection;
 
 
+    public User(){
+
+    }
+
     public User(Long id, String firstname, String lastname, String address, String phoneNumber, Date dateOfBirth) {
         this.id = id;
         this.firstname = firstname;

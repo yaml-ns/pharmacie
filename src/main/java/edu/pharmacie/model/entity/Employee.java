@@ -10,6 +10,8 @@ public class Employee extends User {
     private Function function;
     private int hoursPerWeek;
 
+    public Employee(){
+    }
     public Employee(Long id,
                     String firstname,
                     String lastname,
