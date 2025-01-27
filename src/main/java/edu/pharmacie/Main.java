@@ -14,10 +14,12 @@ public class Main extends Application {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(edu.pharmacie.Main.class.getResource("views/main-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
+
                 scene.getStylesheets().add(edu.pharmacie.Main.class.getResource("style.css").toExternalForm());
                 stage.setTitle("Pharmacie Bon LeBon");
                 stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("logo.jpeg"))));
                 stage.setScene(scene);
+                stage.setMaximized(true);
                 stage.show();
             }catch (Exception e){
                 System.out.println(e.getMessage());

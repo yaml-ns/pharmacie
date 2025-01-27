@@ -6,6 +6,9 @@ import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.service.DataFixtures;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import org.w3c.dom.events.MouseEvent;
 
 import java.util.Objects;
@@ -124,8 +128,48 @@ public class EmployeeController {
     private void handleCreate(EmployeeEvent employeeEvent) {
         tableView.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees()));
         tableView.refresh();
+        tableView.scrollTo(employeeList.size() - 1);
+        tableView.setRowFactory(tv->new TableRow<Employee>(){
+            @Override
+            protected void updateItem(Employee employee, boolean b) {
+                super.updateItem(employee, b);
+                if (employee == null || b) {
+                    setStyle("");
+                } else {
+
+                    if (getIndex() == tv.getItems().size() - 1) {
+                        setStyle("-fx-background-color: rgb(6,215,177);");
+                        applyFadeOutAnimation(this);
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
+
 
     }
+
+    private void applyFadeOutAnimation(TableRow<Employee> row) {
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), row);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), row);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> fadeOut.play()),
+                new KeyFrame(Duration.seconds(2), e -> {
+                    row.setStyle("");
+                    fadeIn.play();
+                })
+        );
+        timeline.play();
+    }
+
     private void handleShow(EmployeeEvent employeeEvent) {
         System.out.println("SHOW " + employeeEvent.getEmployee());
     }
