@@ -15,15 +15,13 @@ import javafx.scene.control.TableView;
 
 public class EmployeeTableView extends TableView<Employee> {
 
-    private final TableView<Employee> tableView;
 
     private final ObservableList<Employee> employees;
 
     public EmployeeTableView(EmployeeEventManager eventManager){
         employees = FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees());
-
-        TableView<Employee> tableView = new TableView<>(employees);
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+        setItems(employees);
+        setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
         TableColumn<Employee, Long> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getId()).asObject());
         TableColumn<Employee, String> firstNameColumn = new TableColumn<>("Prénom");
@@ -62,7 +60,7 @@ public class EmployeeTableView extends TableView<Employee> {
         TableColumn<Employee, Void> actionColumn = new TableColumn<>("Action");
         actionColumn.setCellFactory(col-> new EmployeeActionCell(eventManager));
 
-        tableView.getColumns().addAll(
+        getColumns().addAll(
                 idColumn,
                 firstNameColumn,
                 lastNameColumn,
@@ -74,13 +72,9 @@ public class EmployeeTableView extends TableView<Employee> {
                 activeColumn,
                 actionColumn
         );
-        tableView.getStyleClass().add("employeeTable");
-        this.tableView = tableView;
+        getStyleClass().add("employeeTable");
     }
 
-    public TableView<Employee> getTableView(){
-        return tableView;
-    }
 
     public ObservableList<Employee> getEmployees(){
         return employees;

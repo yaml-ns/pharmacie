@@ -1,6 +1,9 @@
 package edu.pharmacie.controller;
 
 import edu.pharmacie.component.ErrorLabel;
+import edu.pharmacie.event.EmployeeEvent;
+import edu.pharmacie.event.EmployeeEventManager;
+import edu.pharmacie.model.entity.Connection;
 import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.model.entity.Function;
 import edu.pharmacie.service.DataFixtures;
@@ -9,11 +12,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import net.synedra.validatorfx.Validator;
 import org.controlsfx.validation.ValidationSupport;
 
 public class EmployeeFormController {
     private Employee employee;
+    private EmployeeEventManager eventManager;
     @FXML
     private TextField firstnameField;
     @FXML
@@ -42,6 +47,9 @@ public class EmployeeFormController {
         populateFields();
     }
 
+    public void setEventManager(EmployeeEventManager eventManager){
+        this.eventManager = eventManager;
+    }
     private void populateFields(){
 
         firstnameField.setText(employee.getFirstname());
@@ -128,18 +136,43 @@ public class EmployeeFormController {
             functionField.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getFunctions()));
             functionField.getSelectionModel().select(null);
         }
-    } @FXML
+    }
+    @FXML
     protected void onProcess(){
         cleanErrors();
         if (employee != null){
+
             if (validateForm()){
-                System.out.println("form valid");
-            }else{
-                System.out.println("not valid");
+                Connection connection = employee.getConnection();
+                Connection updatedConnection = new Connection(
+                        connection.getId(),
+                        emailField.getText(),
+                        connection.getPassword(),
+                        connection.getRole(),
+                        isActiveField.isSelected()
+                );
+                Employee updatedEmployee = new Employee(
+                        employee.getId(),
+                        firstnameField.getText(),
+                        lastnameField.getText(),
+                        employee.getAddress(),
+                        employee.getPhoneNumber(),
+                        employee.getDateOfBirth(),
+                        employee.getDateOfHiring(),
+                        Double.parseDouble(salaryField.getText()),
+                        functionField.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(hoursPerWeekField.getText()
+                        )
+                );
+                updatedEmployee.setConnection(updatedConnection);
+                DataFixtures.getInstance().updateEmployee(updatedEmployee);
+
+                this.eventManager.fireEmployeeEvent(EmployeeEvent.UPDATE,employee);
+                ((Stage) firstnameField.getScene().getWindow()).close();
             }
 
         }else{
-            System.out.println("new employee created");
+            System.out.println("ajouter");
         }
     }
 }

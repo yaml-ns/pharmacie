@@ -75,7 +75,7 @@ public class EmployeeActionCell extends TableCell<Employee, Void> {
         });
         updateItem.setOnAction(event -> {
             Employee employee = getTableView().getItems().get(getIndex());
-            eventManager.fireEmployeeEvent(EmployeeEvent.UPDATE,employee);
+            eventManager.fireEmployeeEvent(EmployeeEvent.OPEN_DIALOG,employee);
         });
 
         deleteItem.setOnAction(event -> {

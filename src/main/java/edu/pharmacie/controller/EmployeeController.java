@@ -6,6 +6,7 @@ import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
 import edu.pharmacie.model.entity.Employee;
 import edu.pharmacie.service.DataFixtures;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,17 +32,19 @@ public class EmployeeController {
     @FXML
     private VBox tableHeader;
 
+    private EmployeeTableView tableView;
     private final EmployeeEventManager eventManager = new EmployeeEventManager();
     private ObservableList<Employee> employeeList;
 
     public void initialize(){
-        EmployeeTableView tableView = new EmployeeTableView(eventManager);
+        tableView = new EmployeeTableView(eventManager);
         employeeList = tableView.getEmployees();
-        tableContainer.getChildren().add(tableView.getTableView());
+        tableContainer.getChildren().add(tableView);
         VBox.setVgrow(tableView, javafx.scene.layout.Priority.ALWAYS);
         eventManager.addShowListener(this::handleShow);
         eventManager.addCreateListener(this::handleCreate);
         eventManager.addUpdateListener(this::handleUpdate);
+        eventManager.addOpenDialogListener(this::handleOpenDialog);
         eventManager.addDeleteListener(this::handleDelete);
 
     }
@@ -65,6 +68,7 @@ public class EmployeeController {
         });
         return confirm.getPlain();
     }
+
     private void handleDelete(EmployeeEvent employeeEvent) {
         if (showConfirmationDialog()){
             for (Employee employee : employeeList){
@@ -78,13 +82,14 @@ public class EmployeeController {
 
     }
 
-    private void handleUpdate(EmployeeEvent employeeEvent){
+    private void handleOpenDialog(EmployeeEvent employeeEvent){
         try {
             Stage employeeFormModal = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/pharmacie/views/parts/employee-form-modal.fxml"));
             Scene scene = new Scene(loader.load());
             scene.getStylesheets().add(edu.pharmacie.Main.class.getResource("style.css").toExternalForm());
             EmployeeFormController controller = loader.getController();
+            controller.setEventManager(eventManager);
             controller.initFields(employeeEvent.getEmployee());
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
             employeeFormModal.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("logo.jpeg"))));
@@ -93,10 +98,14 @@ public class EmployeeController {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println("UPDATE " + employeeEvent.getEmployee());
     }
 
-
+    private void handleUpdate(EmployeeEvent employeeEvent){
+        System.out.println("WHERE ARE HERE");
+        System.out.println(DataFixtures.getInstance().getEmployees());
+        tableView.setItems(FXCollections.observableArrayList(DataFixtures.getInstance().getEmployees()));
+        tableView.refresh();
+    }
 
     private void handleCreate(EmployeeEvent employeeEvent) {
         System.out.println("CREATE " + employeeEvent.getEmployee());
