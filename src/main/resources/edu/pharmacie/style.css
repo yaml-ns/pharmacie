@@ -226,3 +226,25 @@
 .warning {
     -fx-border-color: orange;
 }
+.form-error-container {
+    -fx-border-color: #f80000 !important;
+    -fx-border-radius:15;
+    -fx-background-radius:15;
+    -fx-background-color: #fcc3c3 !important;
+    -fx-border-width: 1 !important;
+    -fx-padding: 3 10;
+}
+.form .text-input {
+    -fx-background-radius: 20;
+    -fx-padding: 5 5 5 10;
+    -fx-border-width: 1;
+    -fx-border-color: #83b700;
+    -fx-border-radius: 20;
+}
+.form .combo-box {
+    -fx-background-radius: 20;
+    -fx-padding: 2 2 2 10;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-border-color: #83b700;
+}

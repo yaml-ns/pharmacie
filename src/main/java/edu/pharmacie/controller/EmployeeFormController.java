@@ -7,11 +7,10 @@ import edu.pharmacie.service.DataFixtures;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import net.synedra.validatorfx.Decoration;
 import net.synedra.validatorfx.Validator;
 import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.decoration.StyleClassValidationDecoration;
 
 public class EmployeeFormController {
     private Employee employee;
@@ -36,11 +35,10 @@ public class EmployeeFormController {
     @FXML
     private VBox formErrors;
 
-    private ValidationSupport validationSupport;
-    private Validator validator;
 
     public void initFields(Employee employee) {
         this.employee = employee;
+        System.out.println(functionField.getStyleClass());
         populateFields();
     }
 
@@ -62,37 +60,37 @@ public class EmployeeFormController {
         int errors = 0;
         if (firstnameField.getText().isBlank()){
             firstnameField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("Le prénom est obligatoire");
+            HBox error = new ErrorLabel("Le prénom est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (lastnameField.getText().isBlank()){
             lastnameField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("Le nom est obligatoire");
+            HBox error = new ErrorLabel("Le nom est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (emailField.getText().isBlank()){
             emailField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("L'email est obligatoire");
+            HBox error = new ErrorLabel("L'email est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (salaryField.getText().isBlank()){
             salaryField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("Le salaire est obligatoire");
+            HBox error = new ErrorLabel("Le salaire est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (hoursPerWeekField.getText().isBlank()){
             hoursPerWeekField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("Les heures / semaine est obligatoire");
+            HBox error = new ErrorLabel("Les heures / semaine est obligatoire");
             formErrors.getChildren().add(error);
             errors++;
         }
         if (functionField.getSelectionModel().getSelectedItem() == null){
             functionField.getStyleClass().add("form-error");
-            Label error = new ErrorLabel("La fonction est obligatoire");
+            HBox error = new ErrorLabel("La fonction est obligatoire");
             formErrors.getChildren().add(error);
 
             errors++;
@@ -109,7 +107,7 @@ public class EmployeeFormController {
     }
 
     private void cleanErrors(){
-        formErrors.getChildren().removeAll();
+        formErrors.getChildren().clear();
     }
 
     @FXML

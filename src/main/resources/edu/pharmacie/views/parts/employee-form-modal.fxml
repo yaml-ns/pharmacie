@@ -11,13 +11,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="500.0" maxWidth="450.0" minHeight="500.0" minWidth="450.0" prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pharmacie.controller.EmployeeFormController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="450.0" minHeight="500.0" minWidth="450.0" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: #ffffff;" styleClass="form" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.pharmacie.controller.EmployeeFormController">
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <GridPane alignment="TOP_CENTER" prefWidth="430.0" VBox.vgrow="NEVER">
+                <GridPane alignment="TOP_CENTER" prefWidth="430.0" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,13 +45,13 @@
                         <TextField fx:id="salaryField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="hoursPerWeekField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <CheckBox fx:id="isActiveField" mnemonicParsing="false" text="Activé" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <ComboBox fx:id="functionField" prefHeight="26.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="functionField" prefHeight="26.0" prefWidth="217.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                     </VBox.margin>
                 </GridPane>
-                <VBox alignment="BOTTOM_CENTER" prefHeight="121.0" prefWidth="450.0">
+                <VBox alignment="BOTTOM_CENTER" prefHeight="121.0" prefWidth="450.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tous les champs avec * sont obligatoires." textAlignment="CENTER" wrappingWidth="446.5902099609375" />
                     </children>
@@ -61,12 +62,21 @@
     <bottom>
         <HBox alignment="CENTER" prefHeight="57.0" prefWidth="450.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="employeeResetButton" mnemonicParsing="false" onAction="#onReset" text="Réinitialiser">
+                <Button fx:id="employeeResetButton" minHeight="32.0" mnemonicParsing="false" onAction="#onReset" text="Réinitialiser">
                     <HBox.margin>
                         <Insets right="20.0" />
                     </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
                 </Button>
-                <Button fx:id="employeeProcessButton" mnemonicParsing="false" onAction="#onProcess" text="Enregistrer" />
+                <Button fx:id="employeeProcessButton" minHeight="32.0" minWidth="120.0" mnemonicParsing="false" onAction="#onProcess" prefHeight="32.0" styleClass="primary-button" text="Enregistrer" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding></Button>
             </children>
             <BorderPane.margin>
                 <Insets />
@@ -74,9 +84,17 @@
         </HBox>
     </bottom>
     <top>
-        <VBox fx:id="formErrors" maxHeight="1.7976931348623157E308" maxWidth="450.0" minWidth="450.0" prefHeight="80.0" prefWidth="450.0" BorderPane.alignment="BOTTOM_CENTER">
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin></VBox>
+        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="450.0" minWidth="450.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <children>
+                <VBox fx:id="formErrors" maxHeight="1.7976931348623157E308" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
     </top>
 </BorderPane>

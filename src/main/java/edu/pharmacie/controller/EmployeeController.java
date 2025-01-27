@@ -1,5 +1,6 @@
 package edu.pharmacie.controller;
 
+import edu.pharmacie.Main;
 import edu.pharmacie.component.EmployeeTableView;
 import edu.pharmacie.event.EmployeeEvent;
 import edu.pharmacie.event.EmployeeEventManager;
@@ -10,11 +11,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EmployeeController {
@@ -84,6 +87,7 @@ public class EmployeeController {
             EmployeeFormController controller = loader.getController();
             controller.initFields(employeeEvent.getEmployee());
             employeeFormModal.setTitle("Modifier de l'employé <"+employeeEvent.getEmployee().getFirstname() + " "+employeeEvent.getEmployee().getLastname()+">");
+            employeeFormModal.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("logo.jpeg"))));
             employeeFormModal.setScene(scene);
             employeeFormModal.showAndWait();
         }catch (Exception e){
