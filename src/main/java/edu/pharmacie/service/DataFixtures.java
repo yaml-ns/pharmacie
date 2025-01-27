@@ -102,6 +102,18 @@ public class DataFixtures {
     public List<Function> getFunctions(){
         return functions;
     }
+
+    public void addEmployee(Employee employee){
+        employees.add(employee);
+    }
+    public void updateEmployee(Employee updatedEmployee){
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId().equals(updatedEmployee.getId())){
+                employees.set(i,updatedEmployee);
+                return;
+            }
+        }
+    }
     public  void removeEmployee(Long id){
         employees.removeIf(employee -> employee.getId().equals(id));
     }
