@@ -11,6 +11,7 @@ public class EmployeeEvent extends Event {
     public static final EventType<EmployeeEvent> CREATE = new EventType<>(ANY, "EMPLOYEE_CREATE");
     public static final EventType<EmployeeEvent> UPDATE = new EventType<>(ANY, "EMPLOYEE_UPDATE");
     public static final EventType<EmployeeEvent> DELETE = new EventType<>(ANY, "EMPLOYEE_DELETE");
+    public static final EventType<EmployeeEvent> OPEN_DIALOG = new EventType<>(ANY, "EMPLOYEE_OPEN_DIALOG");
 
     private final Employee employee;
 

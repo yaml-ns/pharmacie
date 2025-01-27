@@ -10,6 +10,7 @@ public class EmployeeEventManager {
     private EventHandler<EmployeeEvent> updateEventHandler;
     private EventHandler<EmployeeEvent> deleteEventHandler;
     private EventHandler<EmployeeEvent> showEventHandler;
+    private EventHandler<EmployeeEvent> openDialogEventHandler;
 
     public void addCreateListener(EventHandler<EmployeeEvent> handler) {
         this.createEventHandler = handler;
@@ -24,6 +25,9 @@ public class EmployeeEventManager {
     }
     public void addShowListener(EventHandler<EmployeeEvent> handler) {
         this.showEventHandler = handler;
+    }
+    public void addOpenDialogListener(EventHandler<EmployeeEvent> handler) {
+        this.openDialogEventHandler = handler;
     }
 
     public void fireEmployeeEvent(EventType<EmployeeEvent> eventType, Employee employee) {
@@ -47,6 +51,11 @@ public class EmployeeEventManager {
             case "EMPLOYEE_DELETE":
                 if (deleteEventHandler != null) {
                     deleteEventHandler.handle(event);
+                }
+                break;
+            case "EMPLOYEE_OPEN_DIALOG":
+                if (openDialogEventHandler != null) {
+                    openDialogEventHandler.handle(event);
                 }
                 break;
         }
