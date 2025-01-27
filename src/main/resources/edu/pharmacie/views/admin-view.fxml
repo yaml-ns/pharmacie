@@ -76,7 +76,7 @@
                         </DropShadow>
                      </effect>
                      <VBox.margin>
-                        <Insets bottom="15.0" top="10.0" />
+                        <Insets bottom="8.0" top="10.0" />
                      </VBox.margin>
                      <styleClass>
                         <String fx:value="left-menu-button" />
@@ -127,7 +127,7 @@
                         </DropShadow>
                      </effect>
                      <VBox.margin>
-                        <Insets bottom="15.0" />
+                        <Insets bottom="8.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox fx:id="drugMenuButton" fillHeight="false" layoutX="20.0" layoutY="74.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button" userData="drugView">
@@ -174,7 +174,7 @@
                         </DropShadow>
                      </effect>
                      <VBox.margin>
-                        <Insets bottom="15.0" />
+                        <Insets bottom="8.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox fx:id="customerMenuButton" fillHeight="false" layoutX="20.0" layoutY="128.0" prefHeight="38.0" prefWidth="198.0" styleClass="left-menu-button" userData="customerView">
@@ -221,7 +221,7 @@
                         </DropShadow>
                      </effect>
                      <VBox.margin>
-                        <Insets bottom="15.0" />
+                        <Insets bottom="8.0" />
                      </VBox.margin>
                   </HBox>
                </children>
