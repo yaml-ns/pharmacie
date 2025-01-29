@@ -1,9 +1,6 @@
 package edu.pharmacie.service;
 
-import edu.pharmacie.model.entity.Employee;
-import edu.pharmacie.model.entity.Connection;
-import edu.pharmacie.model.entity.Function;
-import edu.pharmacie.model.entity.Role;
+import edu.pharmacie.model.entity.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +12,7 @@ public class DataFixtures {
     private static DataFixtures instance;
     private List<Employee> employees;
     private List<Function> functions;
+    private List<Medicament> medicaments;
     public static DataFixtures getInstance() {
         if (instance == null) {
             synchronized (DataFixtures.class) {
@@ -29,6 +27,7 @@ public class DataFixtures {
     private  DataFixtures(){
         employees = new ArrayList<>();
         functions = new ArrayList<>();
+        medicaments = new ArrayList<>();
 
         Role adminRole = Role.ADMIN;
         Role drugManagerRole = Role.DRUG_MANAGER;
@@ -83,6 +82,17 @@ public class DataFixtures {
         Employee emp10 = new Employee(10L, "John", "Clerc", "567 rue de Marseille", "0112345678", new Date(1994, 12, 2), new Date(2022, 7, 30), 3100, managerFunction, 40);
         emp10.setConnection(conn10);
 
+        //MEDICAMENTS
+
+        Medicament drug1= new Medicament(1L, "Polysporin" , Type.ANTIBIOTIQUES, 8.99);
+        Medicament drug2= new Medicament(2L, "Antiviral-ANTIKEV", Type.ANTIBIOTIQUES, 12.99);
+        Medicament drug3= new Medicament(3L, "Pfizer", Type.ANTIBIOTIQUES, 19.99);
+
+        medicaments.add(drug1);
+        medicaments.add(drug2);
+        medicaments.add(drug3);
+
+
 
         employees.add(emp1);
         employees.add(emp2);
@@ -104,6 +114,10 @@ public class DataFixtures {
         return functions;
     }
 
+    public List<Medicament> getMedicaments(){
+        return medicaments;
+    }
+
     public void addEmployee(Employee employee){
         employee.setId(Long.valueOf(employees.size() + 1));
         employees.add(employee);
@@ -112,6 +126,20 @@ public class DataFixtures {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getId().equals(updatedEmployee.getId())){
                 employees.set(i,updatedEmployee);
+                return;
+            }
+        }
+    }
+
+    public void addMedicament(Medicament medicament){
+        medicament.setId(Long.valueOf(medicaments.size() + 1));
+        medicaments.add(medicament);
+    }
+
+    public void updateMedicament(Medicament updatedMedicament){
+        for (int i = 0; i < medicaments.size(); i++) {
+            if (medicaments.get(i).getId().equals(updatedMedicament.getId())){
+                medicaments.set(i,updatedMedicament);
                 return;
             }
         }
