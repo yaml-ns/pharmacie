@@ -13,6 +13,7 @@ public class DataFixtures {
     private List<Employee> employees;
     private List<Function> functions;
     private List<Medicament> medicaments;
+
     public static DataFixtures getInstance() {
         if (instance == null) {
             synchronized (DataFixtures.class) {
@@ -24,7 +25,7 @@ public class DataFixtures {
         return instance;
     }
 
-    private  DataFixtures(){
+    private DataFixtures() {
         employees = new ArrayList<>();
         functions = new ArrayList<>();
         medicaments = new ArrayList<>();
@@ -52,47 +53,55 @@ public class DataFixtures {
         Connection conn9 = new Connection(9L, "seller2@pharmacie.com", "seller456", customerRole, true);
         Connection conn10 = new Connection(10L, "hrworker@pharmacie.com", "hrworker123", hrManagerRole, true);
 
-        Employee emp1 = new Employee(1L, "Alice", "Durand", "123 rue de Paris", "0123456789", new Date(1990, 5, 1), new Date(2015, 3, 1), 3500, managerFunction, 40);
+        Employee emp1 = new Employee(1L, "Alice", "Durand", "123 rue de Paris", "0123456789", new Date(1990, 5, 1),
+                new Date(2015, 3, 1), 3500, managerFunction, 40);
         emp1.setConnection(conn1);
 
-        Employee emp2 = new Employee(2L, "Bob", "Dupont", "456 rue de Lyon", "0234567890", new Date(1985, 8, 15), new Date(2016, 7, 15), 3000, pharmacistFunction, 35);
+        Employee emp2 = new Employee(2L, "Bob", "Dupont", "456 rue de Lyon", "0234567890", new Date(1985, 8, 15),
+                new Date(2016, 7, 15), 3000, pharmacistFunction, 35);
         emp2.setConnection(conn2);
 
-        Employee emp3 = new Employee(3L, "Carla", "Martinez", "789 rue de Marseille", "0345678901", new Date(1992, 11, 20), new Date(2017, 1, 10), 2800, pharmacistFunction, 38);
+        Employee emp3 = new Employee(3L, "Carla", "Martinez", "789 rue de Marseille", "0345678901",
+                new Date(1992, 11, 20), new Date(2017, 1, 10), 2800, pharmacistFunction, 38);
         emp3.setConnection(conn3);
 
-        Employee emp4 = new Employee(4L, "David", "Lemoine", "135 rue de Lille", "0456789012", new Date(1980, 2, 5), new Date(2018, 5, 1), 2500, sellerFunction, 30);
+        Employee emp4 = new Employee(4L, "David", "Lemoine", "135 rue de Lille", "0456789012", new Date(1980, 2, 5),
+                new Date(2018, 5, 1), 2500, sellerFunction, 30);
         emp4.setConnection(conn4);
 
-        Employee emp5 = new Employee(5L, "Eve", "Dufresne", "246 rue de Bordeaux", "0567890123", new Date(1995, 4, 25), new Date(2019, 6, 10), 2200, sellerFunction, 28);
+        Employee emp5 = new Employee(5L, "Eve", "Dufresne", "246 rue de Bordeaux", "0567890123", new Date(1995, 4, 25),
+                new Date(2019, 6, 10), 2200, sellerFunction, 28);
         emp5.setConnection(conn5);
 
-        Employee emp6 = new Employee(6L, "François", "Leclerc", "369 rue de Nantes", "0678901234", new Date(1988, 7, 13), new Date(2020, 3, 22), 3800, managerFunction, 40);
+        Employee emp6 = new Employee(6L, "François", "Leclerc", "369 rue de Nantes", "0678901234",
+                new Date(1988, 7, 13), new Date(2020, 3, 22), 3800, managerFunction, 40);
         emp6.setConnection(conn6);
 
-        Employee emp7 = new Employee(7L, "Gina", "Bernard", "357 rue de Toulouse", "0789012345", new Date(1993, 1, 30), new Date(2019, 4, 8), 3200, pharmacistFunction, 37);
+        Employee emp7 = new Employee(7L, "Gina", "Bernard", "357 rue de Toulouse", "0789012345", new Date(1993, 1, 30),
+                new Date(2019, 4, 8), 3200, pharmacistFunction, 37);
         emp7.setConnection(conn7);
 
-        Employee emp8 = new Employee(8L, "Hugo", "Martin", "246 rue de Paris", "0890123456", new Date(1987, 10, 16), new Date(2021, 5, 13), 2600, sellerFunction, 34);
+        Employee emp8 = new Employee(8L, "Hugo", "Martin", "246 rue de Paris", "0890123456", new Date(1987, 10, 16),
+                new Date(2021, 5, 13), 2600, sellerFunction, 34);
         emp8.setConnection(conn8);
 
-        Employee emp9 = new Employee(9L, "Ingrid", "Benoit", "112 rue de Lyon", "0901234567", new Date(1990, 9, 12), new Date(2020, 2, 18), 2900, sellerFunction, 32);
+        Employee emp9 = new Employee(9L, "Ingrid", "Benoit", "112 rue de Lyon", "0901234567", new Date(1990, 9, 12),
+                new Date(2020, 2, 18), 2900, sellerFunction, 32);
         emp9.setConnection(conn9);
 
-        Employee emp10 = new Employee(10L, "John", "Clerc", "567 rue de Marseille", "0112345678", new Date(1994, 12, 2), new Date(2022, 7, 30), 3100, managerFunction, 40);
+        Employee emp10 = new Employee(10L, "John", "Clerc", "567 rue de Marseille", "0112345678", new Date(1994, 12, 2),
+                new Date(2022, 7, 30), 3100, managerFunction, 40);
         emp10.setConnection(conn10);
 
-        //MEDICAMENTS
+        // MEDICAMENTS
 
-        Medicament drug1= new Medicament(1L, "Polysporin" , Type.ANTIBIOTIQUES, 8.99);
-        Medicament drug2= new Medicament(2L, "Antiviral-ANTIKEV", Type.ANTIBIOTIQUES, 12.99);
-        Medicament drug3= new Medicament(3L, "Pfizer", Type.ANTIBIOTIQUES, 19.99);
+        Medicament drug1 = new Medicament(1L, "Polysporin", Type.ANTIBIOTIQUES, 8.99);
+        Medicament drug2 = new Medicament(2L, "Antiviral-ANTIKEV", Type.ANTIVIRAUX, 12.99);
+        Medicament drug3 = new Medicament(3L, "Pfizer", Type.VACCIN, 19.99);
 
         medicaments.add(drug1);
         medicaments.add(drug2);
         medicaments.add(drug3);
-
-
 
         employees.add(emp1);
         employees.add(emp2);
@@ -110,41 +119,49 @@ public class DataFixtures {
         return employees;
     }
 
-    public List<Function> getFunctions(){
+    public List<Function> getFunctions() {
         return functions;
     }
 
-    public List<Medicament> getMedicaments(){
+    public List<Medicament> getMedicaments() {
         return medicaments;
     }
 
-    public void addEmployee(Employee employee){
+    public void addEmployee(Employee employee) {
         employee.setId(Long.valueOf(employees.size() + 1));
         employees.add(employee);
     }
-    public void updateEmployee(Employee updatedEmployee){
+
+    public void updateEmployee(Employee updatedEmployee) {
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getId().equals(updatedEmployee.getId())){
-                employees.set(i,updatedEmployee);
+            if (employees.get(i).getId().equals(updatedEmployee.getId())) {
+                employees.set(i, updatedEmployee);
                 return;
             }
         }
     }
 
-    public void addMedicament(Medicament medicament){
+    public void removeMedicament(Long id) {
+        System.out.println(id);
+        medicaments.removeIf(medicament -> medicament.getId().equals(id));
+
+    }
+
+    public void addMedicament(Medicament medicament) {
         medicament.setId(Long.valueOf(medicaments.size() + 1));
         medicaments.add(medicament);
     }
 
-    public void updateMedicament(Medicament updatedMedicament){
+    public void updateMedicament(Medicament updatedMedicament) {
         for (int i = 0; i < medicaments.size(); i++) {
-            if (medicaments.get(i).getId().equals(updatedMedicament.getId())){
-                medicaments.set(i,updatedMedicament);
+            if (medicaments.get(i).getId().equals(updatedMedicament.getId())) {
+                medicaments.set(i, updatedMedicament);
                 return;
             }
         }
     }
-    public  void removeEmployee(Long id){
+
+    public void removeEmployee(Long id) {
         employees.removeIf(employee -> employee.getId().equals(id));
     }
 

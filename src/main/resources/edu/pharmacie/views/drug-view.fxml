@@ -13,11 +13,17 @@
             <VBox alignment="CENTER" prefHeight="84.0" prefWidth="580.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <VBox alignment="CENTER" prefHeight="278.0" prefWidth="580.0">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </VBox>
+            <BorderPane fx:id="mainContainer" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <VBox fx:id="tableHeader" maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" prefHeight="100.0" prefWidth="550.0" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <VBox fx:id="tableContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="307.0" prefWidth="550.0" />
+               </center>
+               <bottom>
+                  <VBox maxHeight="45.0" maxWidth="1.7976931348623157E308" minHeight="45.0" minWidth="550.0" prefHeight="45.0" prefWidth="550.0" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
          </center>
          <top>
             <VBox alignment="CENTER" maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="580.0" prefHeight="40.0" prefWidth="580.0" BorderPane.alignment="CENTER">
